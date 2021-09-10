@@ -2,8 +2,15 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("path");
+const mongoose = require("mongoose");
 const session = require("express-session");
 const routes = require("./controllers");
+
+// Mongoose connection
+mongoose.connect("mongodb://localhost/fitnessDB", {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 
 // Port setup
 const PORT = process.env.PORT || 8900;
