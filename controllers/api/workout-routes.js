@@ -9,13 +9,13 @@ router.get("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-	const updatedExercises = await Workout.findOneAndUpdate(
+	await Workout.findOneAndUpdate(
 		{ _id: req.params.id },
 		{ $push: { exercises: req.body } },
 		{ new: true },
 		(err, data) => {
-			console.log(data);
-			res.json(data);
+			if (err) return res.json({ err });
+			return res.json(data);
 		}
 	);
 });

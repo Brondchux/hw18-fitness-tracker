@@ -10,6 +10,7 @@ const routes = require("./controllers");
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnessDB", {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+	useFindAndModify: false,
 });
 
 // Port setup
