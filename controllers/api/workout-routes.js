@@ -8,8 +8,16 @@ router.get("/", async (req, res) => {
 	});
 });
 
-router.post("/", (req, res) => {
-	res.json({ ...req.body, message: "Workouts post api endpoint" });
+router.put("/:id", async (req, res) => {
+	const updatedExercises = await Workout.findOneAndUpdate(
+		{ _id: req.params.id },
+		{ $push: { exercises: req.body } },
+		{ new: true },
+		(err, data) => {
+			console.log(data);
+			res.json(data);
+		}
+	);
 });
 
 module.exports = router;
