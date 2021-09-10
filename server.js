@@ -7,7 +7,7 @@ const session = require("express-session");
 const routes = require("./controllers");
 
 // Mongoose connection
-mongoose.connect("mongodb://localhost/fitnessDB", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnessDB", {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
